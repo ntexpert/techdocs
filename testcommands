@@ -1,0 +1,36 @@
+====FIO====
+fio -filename=/dev/nvme10n1p1 -direct=1 -iodepth 1 -thread -rw=read -ioengine=psync -bs=16k -size=200G -numjobs=1 -runtime=100 -group_reporting -name=mytest
+
+sudo fio -filename=/dev/nvme10n1p1 -direct=1 -iodepth 128 -thread -rw=read -ioengine=libaio -bs=16k -size=800G -numjobs=2 -runtime=100 -group_reporting -name=mytest
+
+sudo taskset 1 fio -filename=/dev/nvme10n1p1 -direct=1 -iodepth 128 -thread -rw=read -ioengine=libaio -bs=16k -size=200G -numjobs=1 -runtime=100 -group_reporting -name=mytest
+
+
+sudo taskset 1 fio -filename=/dev/nvme10n1p1 -direct=1 -iodepth 256 -thread -rw=read -ioengine=libaio -bs=16k -size=800G -numjobs=1 -runtime=100 -group_reporting -name=mytest
+=====
+sudo taskset -c 0 fio -filename=/dev/nvme0n1 -direct=1 -iodepth 256 -thread -rw=read -ioengine=libaio -bs=16k -size=800G -numjobs=1 -runtime=200 -group_reporting -name=mytest
+sudo taskset -c 1 fio -filename=/dev/nvme1n1 -direct=1 -iodepth 256 -thread -rw=read -ioengine=libaio -bs=16k -size=800G -numjobs=1 -runtime=200 -group_reporting -name=mytest
+sudo taskset -c 2 fio -filename=/dev/nvme2n1 -direct=1 -iodepth 256 -thread -rw=read -ioengine=libaio -bs=16k -size=800G -numjobs=1 -runtime=200 -group_reporting -name=mytest
+sudo taskset -c 3 fio -filename=/dev/nvme3n1 -direct=1 -iodepth 256 -thread -rw=read -ioengine=libaio -bs=16k -size=800G -numjobs=1 -runtime=200 -group_reporting -name=mytest
+sudo taskset -c 4 fio -filename=/dev/nvme4n1 -direct=1 -iodepth 256 -thread -rw=read -ioengine=libaio -bs=16k -size=800G -numjobs=1 -runtime=200 -group_reporting -name=mytest
+sudo taskset -c 5 fio -filename=/dev/nvme5n1 -direct=1 -iodepth 256 -thread -rw=read -ioengine=libaio -bs=16k -size=800G -numjobs=1 -runtime=200 -group_reporting -name=mytest
+sudo taskset -c 6 fio -filename=/dev/nvme6n1 -direct=1 -iodepth 256 -thread -rw=read -ioengine=libaio -bs=16k -size=800G -numjobs=1 -runtime=200 -group_reporting -name=mytest
+sudo taskset -c 7 fio -filename=/dev/nvme7n1 -direct=1 -iodepth 256 -thread -rw=read -ioengine=libaio -bs=16k -size=800G -numjobs=1 -runtime=200 -group_reporting -name=mytest
+sudo taskset -c 8 fio -filename=/dev/nvme8n1 -direct=1 -iodepth 256 -thread -rw=read -ioengine=libaio -bs=16k -size=800G -numjobs=1 -runtime=200 -group_reporting -name=mytest
+sudo taskset -c 9 fio -filename=/dev/nvme9n1 -direct=1 -iodepth 256 -thread -rw=read -ioengine=libaio -bs=16k -size=800G -numjobs=1 -runtime=200 -group_reporting -name=mytest
+sudo taskset -c 10 fio -filename=/dev/nvme10n1 -direct=1 -iodepth 256 -thread -rw=read -ioengine=libaio -bs=16k -size=800G -numjobs=1 -runtime=200 -group_reporting -name=mytest
+sudo taskset -c 11 fio -filename=/dev/nvme11n1 -direct=1 -iodepth 256 -thread -rw=read -ioengine=libaio -bs=16k -size=800G -numjobs=1 -runtime=200 -group_reporting -name=mytest
+
+===========latency===
+sudo taskset -c 0 fio -filename=/dev/nvme0n1 -direct=1 -iodepth 1 -thread -rw=read -ioengine=psync -bs=16k -size=800G -numjobs=1 -runtime=200 -group_reporting -name=mytest
+sudo taskset -c 1 fio -filename=/dev/nvme1n1 -direct=1 -iodepth 1 -thread -rw=read -ioengine=psync -bs=16k -size=800G -numjobs=1 -runtime=200 -group_reporting -name=mytest
+sudo taskset -c 2 fio -filename=/dev/nvme2n1 -direct=1 -iodepth 1 -thread -rw=read -ioengine=psync -bs=16k -size=800G -numjobs=1 -runtime=200 -group_reporting -name=mytest
+sudo taskset -c 3 fio -filename=/dev/nvme3n1 -direct=1 -iodepth 1 -thread -rw=read -ioengine=psync -bs=16k -size=800G -numjobs=1 -runtime=200 -group_reporting -name=mytest
+sudo taskset -c 4 fio -filename=/dev/nvme4n1 -direct=1 -iodepth 1 -thread -rw=read -ioengine=psync -bs=16k -size=800G -numjobs=1 -runtime=200 -group_reporting -name=mytest
+sudo taskset -c 5 fio -filename=/dev/nvme5n1 -direct=1 -iodepth 1 -thread -rw=read -ioengine=psync -bs=16k -size=800G -numjobs=1 -runtime=200 -group_reporting -name=mytest
+sudo taskset -c 6 fio -filename=/dev/nvme6n1 -direct=1 -iodepth 1 -thread -rw=read -ioengine=psync -bs=16k -size=800G -numjobs=1 -runtime=200 -group_reporting -name=mytest
+sudo taskset -c 7 fio -filename=/dev/nvme7n1 -direct=1 -iodepth 1 -thread -rw=read -ioengine=psync -bs=16k -size=800G -numjobs=1 -runtime=200 -group_reporting -name=mytest
+sudo taskset -c 8 fio -filename=/dev/nvme8n1 -direct=1 -iodepth 1 -thread -rw=read -ioengine=psync -bs=16k -size=800G -numjobs=1 -runtime=200 -group_reporting -name=mytest
+sudo taskset -c 9 fio -filename=/dev/nvme9n1 -direct=1 -iodepth 1 -thread -rw=read -ioengine=psync -bs=16k -size=800G -numjobs=1 -runtime=200 -group_reporting -name=mytest
+sudo taskset -c 10 fio -filename=/dev/nvme10n1 -direct=1 -iodepth 1 -thread -rw=read -ioengine=psync -bs=16k -size=800G -numjobs=1 -runtime=200 -group_reporting -name=mytest
+sudo taskset -c 11 fio -filename=/dev/nvme11n1 -direct=1 -iodepth 1 -thread -rw=read -ioengine=psync -bs=16k -size=800G -numjobs=1 -runtime=200 -group_reporting -name=mytest
