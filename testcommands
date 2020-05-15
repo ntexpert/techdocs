@@ -1,3 +1,53 @@
+		
+=====core dump====
+gzip -d  core dump.gz
+
+===good==./perf -q 1 -w read -o 4096 -t 10 -r 'trtype:RDMA adrfam:IPv4 traddr:192.168.10.129 trsvcid:4420'
+
+root@ubuntu:~# sudo echo 0 > /proc/sys/kernel/yama/ptrace_scope
+
+sudo ./configure --with-rdma --enable-debug
+
+
+sudo HUGEMEM=512 DRIVER_OVERRIDE=vfio-pci scripts/setup.sh
+
+	int p = 0;
+	printf("Enter int: ");
+	scanf("%d", &p);
+
+=== run before===
+	
+	Running the Example Applications
+
+Before running an SPDK application, some hugepages must be allocated and any NVMe and I/OAT devices must be unbound from the native kernel drivers. SPDK includes a script to automate this process on both Linux and FreeBSD. This script should be run as root. It only needs to be run once on the system.
+
+sudo scripts/setup.sh
+
+To rebind devices back to the kernel, you can run
+
+sudo scripts/setup.sh reset
+
+By default, the script allocates 2048MB of hugepages. To change this number, specify HUGEMEM (in MB) as follows:
+
+sudo HUGEMEM=4096 scripts/setup.sh
+sudo HUGEMEM=512 DRIVER_OVERRIDE=vfio-pci scripts/setup.sh
+
+On Linux machines HUGEMEM will be rounded up to system-default huge page size boundary.
+
+All available params can be viewed by running
+
+scripts/setup.sh help
+
+sudo vim /etc/security/limits.conf
+*                soft    memlock         unlimited
+*                hard    memlock         unlimited
+root             soft    memlock         unlimited
+root             hard    memlock         unlimited
+wayne            soft    memlock         unlimited
+wayne            hard    memlock         unlimited
+
+
+
 ====FIO====
 fio -filename=/dev/nvme10n1p1 -direct=1 -iodepth 1 -thread -rw=read -ioengine=psync -bs=16k -size=200G -numjobs=1 -runtime=100 -group_reporting -name=mytest
 
